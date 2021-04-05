@@ -7,8 +7,8 @@
       </div>
       <div class="carousel-inner">
         <!-- <div *ngFor="let car of carDetail" class="carousel-item active" data-bs-interval="10000"> -->
-          <!-- <div *ngFor="let image of images ; index as i;first as firstImage" [ngClass]="{ active: firstImage }" data-bs-interval="2000"> -->
-          <div *ngFor="let image of images let i = index" [ngClass]="getSliderClassName(i)" data-bs-interval="1000">
+          <!-- <div *ngFor="let image of images ;first as firstImage" [ngClass]="{ active: firstImage }" data-bs-interval="2000"> -->
+          <div *ngFor="let image of images let i = index" [ngClass]="getSliderClassName(i)" data-bs-interval="1500">
           <img src="{{imageBasePath}}/{{image.imagePath}}" class="d-block w-100" width="800" height="500" alt="Image">
           <div class="carousel-caption d-none d-md-block">
           </div>
@@ -38,7 +38,7 @@
       </button>
     </div>
     <div>
-      <ul class="list-group list-group-flush">  <!-- *ngIf="carDetail.car"  -->
+      <ul *ngIf="dataLoaded==true" class="list-group list-group-flush">  <!-- *ngIf="carDetail.car"  -->
         <li class="list-group-item">Brand: {{carDetail.car.brandName}}</li>
         <li class="list-group-item">Color: {{carDetail.car.colorName}}</li>
         <li class="list-group-item">Model Year: {{carDetail.car.modelYear}}</li>

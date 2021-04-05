@@ -57,6 +57,7 @@ export class CarDetailComponent implements OnInit {
 
   getSliderClassName(index: Number) {
     if (index == 0) {
+      console.log("index is 0, active")
       return 'carousel-item active';
     } else {
       return 'carousel-item';

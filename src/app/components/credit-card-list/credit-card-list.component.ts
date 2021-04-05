@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { timer } from 'rxjs';
 import { CreditCard } from 'src/app/models/credit-card';
 import { newPayment } from 'src/app/models/newPayment';
 import { CreditCardService } from 'src/app/services/credit-card.service';
@@ -60,7 +61,12 @@ export class CreditCardListComponent implements OnInit {
     this.dateNow = new Date();
     payment.paymentDate = this.datePipe.transform(this.dateNow, 'dd-MM-yyyy');
     this.paymentService.addNewPayment(payment).subscribe(
-      res => { this.toastrService.success("Payment is successful."); },
+      res => { 
+        this.toastrService.success("Payment is successful."); 
+        timer(2000).subscribe(p=>{
+          window.location.href='';
+        });
+      },
       err => { console.log(err.error); this.toastrService.error(err.error); }
     )
   }

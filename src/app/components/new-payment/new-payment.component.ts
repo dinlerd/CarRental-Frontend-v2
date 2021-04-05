@@ -1,8 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { timer } from 'rxjs';
 import { CreditCard } from 'src/app/models/credit-card';
 import { newPayment } from 'src/app/models/newPayment';
 import { Rental } from 'src/app/models/rental';
@@ -33,7 +34,8 @@ export class NewPaymentComponent implements OnInit {
               private localStorage:LocalStorageService,
               private toastrService:ToastrService,
               private activatedRoute:ActivatedRoute,    
-              private datePipe:DatePipe) { }
+              private datePipe:DatePipe,
+              private router:Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -75,6 +77,10 @@ export class NewPaymentComponent implements OnInit {
       res => { 
         console.log("paymentDate: " + this.paymentModel.paymentDate)
         this.toastrService.success("Payment is successful."); 
+        //this.router.navigate([""])
+        timer(3000).subscribe(p=>{
+          window.location.href='';
+        });
       },
       err => { this.toastrService.error("Payment error."); }
     )
