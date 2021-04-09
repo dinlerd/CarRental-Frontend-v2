@@ -14,6 +14,8 @@ import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CarDetailComponent } from './components/car/car-detail/car-detail.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { FileUploadModule, FileSelectDirective } from 'ng2-file-upload';
+
 
 import { ToastrModule } from 'ngx-toastr';
 import { RentSummaryComponent } from './components/rent-summary/rent-summary.component';
@@ -37,6 +39,11 @@ import { UserPassUpdateComponent } from './components/user-pass-update/user-pass
 import { NewPaymentComponent } from './components/new-payment/new-payment.component';
 import { CreditCardListComponent } from './components/credit-card-list/credit-card-list.component';
 import { DatePipe } from '@angular/common';
+import { BrandColorFilterComponent } from './components/brand-color-filter/brand-color-filter.component';
+import { BrandFilterPipe } from './pipes/brand-filter.pipe';
+import { ColorFilterPipe } from './pipes/color-filter.pipe';
+import { ImageAddComponent } from './components/image-add/image-add.component';
+import { TextDirective } from './directives/text.directive';
 
 @NgModule({
   declarations: [
@@ -67,7 +74,12 @@ import { DatePipe } from '@angular/common';
     UserUpdateComponent,
     UserPassUpdateComponent,
     NewPaymentComponent,
-    CreditCardListComponent
+    CreditCardListComponent,
+    BrandColorFilterComponent,
+    BrandFilterPipe,
+    ColorFilterPipe,
+    ImageAddComponent,
+    TextDirective
   ],
   imports: [
     BrowserModule,
@@ -78,7 +90,8 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
-    })
+    }),
+    FileUploadModule
   ],
   providers: [
     DatePipe,

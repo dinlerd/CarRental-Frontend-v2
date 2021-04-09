@@ -18,6 +18,7 @@ export class CarAddComponent implements OnInit {
   goToImageAdd:boolean = false;
   brands:Brand[];
   colors:Color[];
+  carId:number;
   
   constructor(private formBuilder:FormBuilder, 
     private carService:CarService,
@@ -47,6 +48,29 @@ export class CarAddComponent implements OnInit {
       this.carService.add(carModel).subscribe(response=>{
         this.toastrService.success(response.message,"Add Process Successful")
         this.goToImageAdd = true;
+      },responseError=>{
+        if(responseError.error.ValidationErrors.length>0)
+        {
+          console.log(responseError.error.ValidationErrors)
+          for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,"Validation Error")
+          }
+        }
+      })
+    }else{
+      this.toastrService.error("Form is missing","Attention")
+    }
+  }
+
+  addCar(){
+    if(this.carAddForm.valid){
+      let carModel =  Object.assign({},this.carAddForm.value) 
+      this.carService.addCar(carModel).subscribe(response=>{
+        this.toastrService.success(response.message,"Add Process Successful")
+        this.goToImageAdd = true;
+        this.carId = response.data.id;
+        console.log("response data= " + response.data.id)
+        console.log("carId= " + this.carId)
       },responseError=>{
         if(responseError.error.ValidationErrors.length>0)
         {

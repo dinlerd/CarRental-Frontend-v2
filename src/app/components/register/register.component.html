@@ -3,19 +3,19 @@
       <h1 class="h3 mb-3 fw-normal">Register</h1>
   
       <div class="form-group">
-        <input class="form-control" formControlName="firstName" type="firstName" id="firstName" placeholder="First Name"/>
+        <input appText class="form-control" formControlName="firstName" type="firstName" id="firstName" placeholder="First Name"/>
       </div>
   
       <div class="form-group">
-        <input class="form-control" formControlName="lastName" type="lastName" id="lastName" placeholder="Last Name"/>
+        <input appText class="form-control" formControlName="lastName" type="lastName" id="lastName" placeholder="Last Name"/>
       </div>
   
       <div class="form-group">
-        <input class="form-control" formControlName="email" type="email" id="email" placeholder="E-mail"/>
+        <input appText class="form-control" formControlName="email" type="email" id="email" placeholder="E-mail"/>
       </div>
   
       <div class="form-group">
-        <input class="form-control" formControlName="password" type="password" id="password" placeholder="Password"/>
+        <input appText class="form-control" formControlName="password" type="password" id="password" placeholder="Password"/>
       </div>
   
       <button class="w-100 btn btn-primary" (click)="register()">

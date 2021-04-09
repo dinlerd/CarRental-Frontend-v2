@@ -71,15 +71,20 @@
                         </div>
                     </div>
                 </form>
+                <div class="mb-3">
+                    <section style="float:left">
+                        <button  class="btn btn-fill btn-primary" (click)="addCar()">Add</button> 
+                      </section>
+                </div>
             </div>
             <div class="card-footer">
-                <section style="float:left">
-                    <button  class="btn btn-fill btn-primary" (click)="add()">Add</button> 
-                  </section>
-                  <section style="float: right">
+
+                  <!-- <section style="float: right">
                     <button *ngIf="goToImageAdd==true" routerLink="/car/addCarImage" class="btn btn-fill btn-primary">Add-Image Page</button> 
-                  </section>
+                  </section> -->
+                  <app-image-add [carId]="carId"></app-image-add> 
             </div>
         </div>
     </div>
+    <!-- <app-image-add [carId]="carId"></app-image-add>  -->
 </div>
